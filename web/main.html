@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <meta charset="utf-8"/>
+        <title>BGUKI Player</title>
+
+        <script src="eel.js"></script>
+        <script>
+
+
+// $(document).ready(function(){
+//     $(".add").click(function(){
+//         var links = $("[rebest='yes']").length;
+//         $("#top_put").clone().attr('id', 'top_put' + links).appendTo(".put_1");
+        
+//     });
+// });
+
+// $(document).ready(function(){
+// 	  $(".buttonCheck1").click(function(){ // задаем функцию при нажатиии на элемент <button>
+// 	    $("input").unwrap(".put_2"); // удаляем все родительские элементы элементов <p>, при условии, что они имеют класс test
+// 	  });
+// 	});
+
+
+//   var els = document.getElementsByName("delnot");
+// els.forEach(function(item){
+//     item.addEventListener("click", function(){
+//         item.parentNode.parentNode.removeChild(item.parentNode);
+//     });
+// });
+
+// $(document).ready(function(){
+//     $(".type_d").click(function(){
+//         var links = $("[rebest='no']").length;
+//         $("#top_put").remove().attr('id', 'top_put' + links).appendTo(".put_1");
+        
+//     });
+// });
+
+            // $(document).ready(function(){
+            //     $(".add").click(function(){
+ 
+                    
+            //     });
+            // });
+            $(document).ready(function(){           //Супер крутая штука кторая преносит из inputa type="file" в input type='text'
+                $('#type_o').change(function(){
+                    if(this.files[0])
+                    $('#inText').val(this.files[0].name)
+                });
+             });
+
+            
+
+             function but() 
+             {
+               var reg = document.getElementById("but_add").value;
+              
+               let mydiv = document.createElement('div');
+               mydiv.className = "but_add";
+               var links = 0;
+               links = $("[rebest='yes']").length;
+               console.log("#type_o" + links);
+               mydiv.id = 'mydiv';
+               mydiv.innerHTML = "<div class='put_dop' id='container'>" + 
+                         "<div class='put_2'>"+
+                         "<label for='type_o' class='label1'> "+
+                         "<input type='text' class='inpt_1' id='inText" + links + "' name='inText' rebest='yes'/>"+
+                         "</label>"+
+                        " <input class='inpt_2' id='inOnDate' type='time'/>"+
+                         "<input class='inpt_3' id='inTwDate' type='time'/>"+
+                         "<label>"+
+                        "<input class='type_o' id='type_o" + links + "' type='file' value='none'  readonly='' name='type_o'/>"+
+                        "</label>"+
+                         "<button class='type_d' id='del' rebest='no' name='delnot' onclick='myFunc(this)' ></button></div>"+
+                         "</div>"
+                         
+                       // $("#inText").attr('id', 'inText' + links).appendTo(".label1");
+                          
+               document.body.appendChild(mydiv);
+               
+               $(document).ready(function(){           //Супер крутая штука кторая преносит из inputa type="file" в input type='text'
+                $('#type_o' + links).change(function(){
+                    if(this.files[0])
+                    $('#inText' + links).val(this.files[0].name)
+                });
+             });
+
+              
+             };
+               // "<div class='put_2' id='top_put' rebest='yes'>"+ 
+                            //     "<label for='type_o'>"+
+                            //         "<input type='text' class='inpt_1' id='inText' name='inText'/>"+
+                            //         " </label>"+
+                            //         "<input type='time' class='inpt_2' id='inOnDate'/>"+
+                            //         "<input type='time' class='inpt_3' id='inTwDate'/>"+
+                            //         "<label>"+
+                            //             "<input class='type_o' id='type_o' type='file' value='none'  readonly='' name='type_o'/>"+
+                            //         "</label>"+
+                            //         "<button class='type_d' id='del' rebest='no' name='delnot' onclick='myFunc(this)'></button>"+
+                            //     "</div>"
+
+            //  $(document).ready(function(){           //Супер крутая штука кторая преносит из inputa type="file" в input type='text'
+            //     $('#type_o').change(function(){
+            //         if(this.files[0])
+            //         $('#inText').val(this.files[0].name)
+            //     });
+            //  });
+
+
+
+
+            $(".put_2 input[type=file]").change(function(){
+                var tt = $(this).val().replace(/.*\\/, "");
+                $("#tt").val(inText);
+            });
+
+//            document.querySelector('.type_o').addEventListener('click',newClick);  //Попытка сделать копию инфы из inputa
+ 
+            function newClick() {
+                let a =document.querySelector('.type_o').value;
+                document.querySelector('.inpt_1').value =a;
+            }             
+
+            function ready(){
+                var inputs =document.querySelectorAll('.type_o');
+                Array.prototype.forEach.call( inputs, function (input){
+                    var label =input.nextElemetSibling,
+                        labelVal = label.value;
+                input.addEventListener('change', function(e)
+                {
+                    console.log(this.files);
+                    var fileName= '';
+                    if(this.files && this.files.lenght > 1)
+                    alert("Только по одному")
+                    else
+                    fileName = this.files[0].name;
+                    if(fileName)
+                    label.querySelector('.inText').value = fileName;
+                    else
+                    label.value = labelVal;
+                });
+                
+                });
+                document.addEventListener("DOMContenLoaded", ready);
+
+
+            };
+            // $('input[name=inputFile]').on('change', function() {
+            //  $("input[name=inputFileText]").val($(this).get(0).files[0].name);
+            //  });
+
+        //       function removeElement()
+        //    {
+        //       document.getElementById('mydiv').remove();
+        //    }
+        //       function removeElement()
+        //       {
+        //              document.querySelectorAll("#container > input[type='button']").forEach(item => {
+        //                  item.addEventListener("click", e => {
+        //                      let element = e.currentTarget;
+
+        //                     Array.from(element.parentElement.children).forEach((child, index) => {
+        //                         if (child === element) {
+        //                             document.getElementById(index).remove();
+        //                 }
+        //              });
+        //          });
+        //      });                    
+        //       }
+
+ 
+            </script>
+
+          
+          
+        <link rel="icon" type="image/png" href="logo.png">
+        <link rel="stylesheet" href="main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;1,400;1,900&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <!-- <div id="bg">
+            <div id="container">
+             <div id="nav">Левая колонка</div>
+             <div id="aside">
+             <form action="">
+             <input type="hidden" id="reg" text="0">
+               <p><input type="button" value="Проверить" onclick="but(this)"></p>
+              </form>
+              </div>
+             <div id="content">Центральная колонка</div>
+            </div>
+            </div> -->
+            
+         <!-- <div class="table_1">
+             <table>
+                <tr>
+                    <th class="number_id">1</th>
+                    <th><input class="inpt_1" /></th>
+                    <th><input class="inpt_2" /></th>
+                    <th><input class="inpt_3" /></th>
+                </tr>
+                <tr>
+                    <th class="number_id">2</th>
+                    <th><input class="inpt_1" /></th>
+                    <th><input class="inpt_2" /></th>
+                    <th><input class="inpt_3" /></th>
+                </tr>
+                <tr>
+                    <th class="number_id">3</th>
+                    <th><input class="inpt_1" /></th>
+                    <th><input class="inpt_2" /></th>
+                    <th><input class="inpt_3" /></th>
+                </tr>
+                
+            </table>
+        </div> -->
+
+    <main >
+        <input class="next_page" type="button" value="Start" onclick="reload_1(this)" /> <!--window.location='player.html'-->
+        <div class="group"  >
+            <div class="add_div">
+                <button class="add" id="but_add" onclick="but(this)"></button>
+                <span class="span_first">Name:</span>
+                <span class="span_second">Time start:</span>
+                <span class="span_third">Time out:</span>
+
+            </div>
+             <div class="put_1" >
+                <div class="put_2" id="top_put" > 
+                    <label for="type_o">
+                        <input type="text" class="inpt_1" id="inText" name="inText" rebest='yes'/>
+                    </label>
+                    <input type="time" class="inpt_2" id='inOnDate'/>
+                    <input type="time" class="inpt_3" id='inTwDate'/>
+                    <label>
+                        <input class="type_o" id="type_o" type="file" value="none"  readonly="" name="type_o"/>
+                    </label>
+                    <button class="type_d" id="del" rebest='no' name="delnot" onclick="myFunc(this)"></button>
+                </div>            
+            </div>
+        </div>
+    </main>
+        <script>
+            function myFunc(currentElem) {
+            currentElem.parentNode.remove();
+            }
+            function reload_1(){
+                document.location.href = "player.html";
+            }
+            // input.onclick=function(){
+            //     inText.value = type_o.value;
+            // }
+        </script>
+        <script>
+            const swup = new Swup();
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </body>
+</html>
