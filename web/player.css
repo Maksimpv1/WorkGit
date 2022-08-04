@@ -1,3 +1,28 @@
 body{
     background-color: #36393F;
 }
+.test{
+    margin-left: auto;
+    margin-right: auto;
+    width: 15em;
+}
+.callback{
+    background-color: #5865F2;
+    color: #FFFFFF;
+    border-radius: 3px;
+    border: none;
+    width: 90px;
+    height:30px;
+    font-size: 1.2rem;
+    position: fixed;
+    margin-left: 88%;
+    top: 50px;
+    cursor: pointer;
+}
+
+.callback:active {
+    width: 85px;
+    height: 28px;
+    top: 51px;
+    margin-left: 88%;
+}

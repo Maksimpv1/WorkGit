@@ -10,9 +10,24 @@
     </head>
     <body>
         <main>
-            <video id="video-player" width="600px" height="400px"></video>
-
+            <video id="videoPlayer" width="600px" height="400px" style="width: 80%; margin-left: 10%;">
+            <source src="video1.mp4" type="video/mp4"/>
+            </video>
+            <progress id="progresshtml" max="100" value="0" style="width: 80%; margin-left: 10%;"></progress>
+            <div style="margin-left: 10%; margin-top: 20px;">
+                <button id="play">Play</button>
+                <button id="stop">Stop</button>
+                <button id="pause">Pause</button>
+                <button id="speed-up">Faster</button>
+                <button id="speed-normal">Normal</button>
+                <button id="speed-down">Slower</button>
+                <button id="full-screen">Fullscreen</button>
+               <div><input id="volume" type="range" min="0" max="100">Volume</div>
+            </div>
         </main>
+        <input type="button" class="callback" value="Back" onclick="backed(this)"/>
 
+
+        <script src="player.js"></script>
     </body>
 </html>

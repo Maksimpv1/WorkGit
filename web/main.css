@@ -332,7 +332,12 @@ html.is-animating .transition-fade {
         margin-left: 75%;
         top: 50px;
     }
-    
+    .next_page:active {
+        width: 85px;
+        height: 28px;
+        top: 51px;
+        margin-left: 75%;
+    }
 }
 
 
