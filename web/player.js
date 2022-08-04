@@ -8,6 +8,11 @@ progressjs = document.querySelector('#progresshtml');
 video.ontimeupdate = progressUp; // функция для связи прогресс бара с видосом
 
 
+function timesp(){
+    document.querySelector('#timespan').innerHTML = video.currentTime;
+}
+
+
 
 function backed(){
     document.location.href='main.html';
@@ -23,6 +28,10 @@ function progressUp(){
     let a = video.duration;  //присваиваем время видео a
     let b = video.currentTime; // присваиваем текущее время b
     progressjs.value = (100 * b) / a;
+    let namespan = document.querySelector('#timespan');
+    let strTime = Math.trunc(video.currentTime);
+    namespan.innerHTML = strTime;
+
 }
 
 function progressRewind(){
@@ -43,6 +52,7 @@ document.querySelector('#speed-normal').onclick = speedNormal;
 document.querySelector('#speed-down').onclick = speedDown;
 document.querySelector('#volume').oninput = videoVolume;
 document.querySelector('#full-screen').onclick = fullsk;
+
 
 function fullsk(){
     if(video.requestFullscreen){
