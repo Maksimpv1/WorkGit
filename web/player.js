@@ -14,9 +14,9 @@ function timesp(){
 
 
 
-function backed(){
-    document.location.href='main.html';
-};
+// function backed(){
+//     document.location.href='main.html';
+// };
 
 progressjs.onclick = progressRewind   //вешаю собынике onclick на прогрес бар
             
@@ -44,6 +44,7 @@ function progressRewind(){
     video.currentTime = video.duration * (progressPosition/progresswidth); // сложно, получаем текущее время по нажатию
     video.play();
 }
+document.querySelector('#start_page').onclick = afterstart;
 document.querySelector('#play').onclick = play;
 document.querySelector('#stop').onclick = stop;
 document.querySelector('#pause').onclick = pause;
@@ -53,6 +54,9 @@ document.querySelector('#speed-down').onclick = speedDown;
 document.querySelector('#volume').oninput = videoVolume;
 document.querySelector('#full-screen').onclick = fullsk;
 
+// function afterstart(){
+//     video.play();
+// }
 
 function fullsk(){
     if(video.requestFullscreen){
@@ -105,3 +109,51 @@ function videoVolume() {
     let v = this.value;
     video.volume = v / 100;
 }; 
+
+
+$(document).ready(function(){           //Супер крутая штука кторая преносит из inputa type="file" в input type='text'
+    $('#type_o').change(function(){
+        if(this.files[0])
+        $('#inText').val(this.files[0].name)
+    });
+ });
+
+
+
+ function but() 
+ {
+   var reg = document.getElementById("but_add").value;
+  
+   //let mydiv = document.createElement('div');
+   var divmain = document.getElementById("put_1Id");
+   var links = 0;
+   links = $("[rebest='yes']").length;
+   console.log("#type_o" + links);
+   //mydiv.id = 'mydiv';
+   var divdop = "<div class='put_dop' id='container'>" + 
+             "<div class='put_2'><br>"+
+             "<label for='type_o' class='label1'> "+
+             "<input type='text' class='inpt_1' id='inText" + links + "' name='inText' rebest='yes'/>"+
+             "</label>"+
+            " <input class='inpt_2' id='inOnDate' type='time'/>"+
+             "<input class='inpt_3' id='inTwDate' type='time'/>"+
+             "<label>"+
+            "<input class='type_o' id='type_o" + links + "' type='file' value='none'  readonly='' name='type_o'/>"+
+            "</label>"+
+             "<button class='type_d' id='del' rebest='no' name='delnot' onclick='myFunc(this)' ></button></div>"+
+             "</div>"
+             
+           // $("#inText").attr('id', 'inText' + links).appendTo(".label1");
+            divmain.innerHTML += divdop;
+              
+   //document.body.appendChild(mydiv);
+   
+   $(document).ready(function(){           //Супер крутая штука кторая преносит из inputa type="file" в input type='text'
+    $('#type_o' + links).change(function(){
+        if(this.files[0])
+        $('#inText' + links).val(this.files[0].name)
+    });
+ });
+
+  
+ };

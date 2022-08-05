@@ -45,51 +45,7 @@
                     
             //     });
             // });
-            $(document).ready(function(){           //Супер крутая штука кторая преносит из inputa type="file" в input type='text'
-                $('#type_o').change(function(){
-                    if(this.files[0])
-                    $('#inText').val(this.files[0].name)
-                });
-             });
-
             
-
-             function but() 
-             {
-               var reg = document.getElementById("but_add").value;
-              
-               let mydiv = document.createElement('div');
-               mydiv.className = "but_add";
-               var links = 0;
-               links = $("[rebest='yes']").length;
-               console.log("#type_o" + links);
-               mydiv.id = 'mydiv';
-               mydiv.innerHTML = "<div class='put_dop' id='container'>" + 
-                         "<div class='put_2'>"+
-                         "<label for='type_o' class='label1'> "+
-                         "<input type='text' class='inpt_1' id='inText" + links + "' name='inText' rebest='yes'/>"+
-                         "</label>"+
-                        " <input class='inpt_2' id='inOnDate' type='time'/>"+
-                         "<input class='inpt_3' id='inTwDate' type='time'/>"+
-                         "<label>"+
-                        "<input class='type_o' id='type_o" + links + "' type='file' value='none'  readonly='' name='type_o'/>"+
-                        "</label>"+
-                         "<button class='type_d' id='del' rebest='no' name='delnot' onclick='myFunc(this)' ></button></div>"+
-                         "</div>"
-                         
-                       // $("#inText").attr('id', 'inText' + links).appendTo(".label1");
-                          
-               document.body.appendChild(mydiv);
-               
-               $(document).ready(function(){           //Супер крутая штука кторая преносит из inputa type="file" в input type='text'
-                $('#type_o' + links).change(function(){
-                    if(this.files[0])
-                    $('#inText' + links).val(this.files[0].name)
-                });
-             });
-
-              
-             };
                // "<div class='put_2' id='top_put' rebest='yes'>"+ 
                             //     "<label for='type_o'>"+
                             //         "<input type='text' class='inpt_1' id='inText' name='inText'/>"+
@@ -221,8 +177,8 @@
         </div> -->
 
     <main >
-        <input class="next_page" type="button" value="Start" onclick="reload_1(this)" /> <!--window.location='player.html'-->
-        <div class="group"  >
+        <input class="next_page" type="button" id="start_page" value="Start" onclick="reload_1(this)" /> <!--window.location='player.html'-->
+        <div class="group" id="groupId" >
             <div class="add_div">
                 <button class="add" id="but_add" onclick="but(this)"></button>
                 <span class="span_first">Name:</span>
@@ -230,7 +186,7 @@
                 <span class="span_third">Time out:</span>
 
             </div>
-             <div class="put_1" >
+             <div class="put_1" id="put_1Id">
                 <div class="put_2" id="top_put" > 
                     <label for="type_o">
                         <input type="text" class="inpt_1" id="inText" name="inText" rebest='yes'/>
@@ -245,21 +201,61 @@
             </div>
         </div>
     </main>
+
+    <div id="secondDiv">
+        <video id="videoPlayer" width="600px" height="400px" style="width: 80%; margin-left: 10%;">
+        <source src="video1.mp4" type="video/mp4"/>
+        </video>
+        <div style="text-align: center"><span id="timespan" >0</span></div>
+        <progress id="progresshtml" max="100" value="0" style="width: 80%; margin-left: 10%;"></progress>
+        <div style="margin-left: 10%; margin-top: 20px;">
+            <button id="play">Play</button>
+            <button id="stop">Stop</button>
+            <button id="pause">Pause</button>
+            <button id="speed-up">Faster</button>
+            <button id="speed-normal">Normal</button>
+            <button id="speed-down">Slower</button>
+            <button id="full-screen">Fullscreen</button>
+           <div><input id="volume" type="range" min="0" max="100">Volume</div>
+        </div>
+        <input type="button" class="callback" value="Back" onclick="backed(this)"/>
+    </div>
+    
+
+
+
+
         <script>
             function myFunc(currentElem) {
             currentElem.parentNode.remove();
             }
             function reload_1(){
-                document.location.href = "player.html";
+                var hideId = document.getElementById('groupId');
+                var secId = document.getElementById('secondDiv')
+                if(hideId.style.display === 'none'){
+                    hideId.style.display = 'block';
+                    secId.style.display = 'none'
+                   
+                }else{
+                    hideId.style.display = 'none';
+                    secId.style.display = 'block'
+                }
+               // document.location.href = "player.html";
             }
             // input.onclick=function(){
             //     inText.value = type_o.value;
             // }
+
+            
+
+
+
         </script>
         <script>
             const swup = new Swup();
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="player.js"></script>
 
     </body>
 </html>

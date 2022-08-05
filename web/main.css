@@ -2,6 +2,11 @@ body{
     background-color: #36393F;
 }
 
+#secondDiv{
+    display: none;
+}
+
+
 .transition-fade {
     transition: 0.4s;
     opacity: 1;
@@ -31,12 +36,17 @@ html.is-animating .transition-fade {
 
 .group{
     text-align: right;
-    display: flex;
+    display: block;
     margin-top: 250px;
     margin-left: 150px;
+    position: absolute;
     /* justify-content: flex-end; */
     
     
+}
+
+.add_div{
+    display: flex;
 }
 
 
@@ -75,7 +85,7 @@ html.is-animating .transition-fade {
 .put_dop{
     text-align: right;
     display: flex;
-    margin-left: 150px;
+    position: relative;
 }
 
 /* .put_3{
@@ -289,7 +299,7 @@ html.is-animating .transition-fade {
     }
     .group{
         text-align: right;
-        display: flex;
+        display: block;
         margin-top: 150px;
         margin-left: 50px;
         
